@@ -1,0 +1,151 @@
+# SIMPLE STOCK PORTFOLIO TRACKER
+
+# Fixed stock prices
+apple_price = 188
+tesla_price = 259
+google_price = 142
+microsoft_price = 378
+amazon_price = 145
+
+print("="*50)
+print("STOCK PORTFOLIO TRACKER")
+print("="*50)
+print("\nAvailable stocks:")
+print("1. AAPL (Apple) - $", apple_price)
+print("2. TSLA (Tesla) - $", tesla_price)
+print("3. GOOGL (Google) - $", google_price)
+print("4. MSFT (Microsoft) - $", microsoft_price)
+print("5. AMZN (Amazon) - $", amazon_price)
+
+# Variables to store user's stocks
+my_aapl = 0
+my_tsla = 0
+my_googl = 0
+my_msft = 0
+my_amzn = 0
+
+print("\nNow add your stocks (type 'done' to finish):")
+
+# Loop to take user input
+while True:
+    print("\n" + "-"*30)
+    choice = input("Choose stock (AAPL/TSLA/GOOGL/MSFT/AMZN): ").upper()
+    
+    # Exit condition
+    if choice == "DONE":
+        break
+    
+    # Add Apple stocks
+    if choice == "AAPL":
+        qty = int(input("How many shares? "))
+        my_aapl = my_aapl + qty
+        print("Added", qty, "shares of Apple")
+    
+    # Add Tesla stocks
+    elif choice == "TSLA":
+        qty = int(input("How many shares? "))
+        my_tsla = my_tsla + qty
+        print("Added", qty, "shares of Tesla")
+    
+    # Add Google stocks
+    elif choice == "GOOGL":
+        qty = int(input("How many shares? "))
+        my_googl = my_googl + qty
+        print("Added", qty, "shares of Google")
+    
+    # Add Microsoft stocks
+    elif choice == "MSFT":
+        qty = int(input("How many shares? "))
+        my_msft = my_msft + qty
+        print("Added", qty, "shares of Microsoft")
+    
+    # Add Amazon stocks
+    elif choice == "AMZN":
+        qty = int(input("How many shares? "))
+        my_amzn = my_amzn + qty
+        print("Added", qty, "shares of Amazon")
+    
+    # Handle invalid stock symbol
+    else:
+        print("Wrong choice! Choose from: AAPL, TSLA, GOOGL, MSFT, AMZN")
+
+# Calculate total portfolio value
+total = 0
+
+print("\n" + "="*50)
+print("YOUR PORTFOLIO SUMMARY")
+print("="*50)
+
+# Calculate Apple value
+if my_aapl > 0:
+    value = my_aapl * apple_price
+    total = total + value
+    print("AAPL |", my_aapl, "shares | $", value)
+
+# Calculate Tesla value
+if my_tsla > 0:
+    value = my_tsla * tesla_price
+    total = total + value
+    print("TSLA |", my_tsla, "shares | $", value)
+
+# Calculate Google value
+if my_googl > 0:
+    value = my_googl * google_price
+    total = total + value
+    print("GOOGL |", my_googl, "shares | $", value)
+
+# Calculate Microsoft value
+if my_msft > 0:
+    value = my_msft * microsoft_price
+    total = total + value
+    print("MSFT |", my_msft, "shares | $", value)
+
+# Calculate Amazon value
+if my_amzn > 0:
+    value = my_amzn * amazon_price
+    total = total + value
+    print("AMZN |", my_amzn, "shares | $", value)
+
+print("-"*50)
+print("TOTAL VALUE: $", total)
+print("="*50)
+
+# Ask user if they want to save the report
+save = input("\nSave report to file? (yes/no): ")
+
+if save == "yes":
+    # Open file to write
+    f = open("my_portfolio.txt", "w")
+    f.write("MY STOCK PORTFOLIO\n")
+    f.write("="*30 + "\n")
+    
+    # Write Apple data
+    if my_aapl > 0:
+        value = my_aapl * apple_price
+        f.write("AAPL | " + str(my_aapl) + " shares | $" + str(value) + "\n")
+    
+    # Write Tesla data
+    if my_tsla > 0:
+        value = my_tsla * tesla_price
+        f.write("TSLA | " + str(my_tsla) + " shares | $" + str(value) + "\n")
+    
+    # Write Google data
+    if my_googl > 0:
+        value = my_googl * google_price
+        f.write("GOOGL | " + str(my_googl) + " shares | $" + str(value) + "\n")
+    
+    # Write Microsoft data
+    if my_msft > 0:
+        value = my_msft * microsoft_price
+        f.write("MSFT | " + str(my_msft) + " shares | $" + str(value) + "\n")
+    
+    # Write Amazon data
+    if my_amzn > 0:
+        value = my_amzn * amazon_price
+        f.write("AMZN | " + str(my_amzn) + " shares | $" + str(value) + "\n")
+    
+    f.write("-"*30 + "\n")
+    f.write("TOTAL: $" + str(total))
+    f.close()  # Close the file
+    
+    print("Report saved as 'my_portfolio.txt'!")
